@@ -1,0 +1,77 @@
+﻿@model List<Order>
+
+@{
+    ViewData["Title"] = "OrderListSearch";
+    Layout = "~/Views/Layout/Index.cshtml";
+    int count = 0;
+
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Sipariş Listesi 2</h4>
+                <p class="card-description">
+                    Duruma Göre Arama İşlemi
+                </p>
+                <div class="table-responsive">
+
+                    <form asp-action="OrderListSearch" method="get" class="mb-3">
+                        <div class="input-group" style="max-width: 500px;">
+                            <input type="text" name="name" class="form-control" placeholder="Durumu giriniz" />
+                            <button class="btn btn-primary" type="submit">Ara</button>
+                        </div>
+                        <br />
+                        <label>Filtre Tipi</label>
+                        <select name="filterType" class="form-control" style="max-width:250px">
+                            <option value="start">Başlayan Harfler</option>
+                            <option value="end">Biten Harfler</option>
+                        </select>
+                    </form>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ürün Adı</th>
+                                <th>Müşteri</th>
+                                <th>Sipariş Adet</th>
+                                <th>Birim Fiyat</th>
+                                <th>Toplam Fiyat</th>
+                                <th>Durum</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.OrderId</td>
+                                    <td>@item.ProductId</td>
+                                    <td>@item.CustomerId</td>
+                                    <td>@item.UnitPrice</td>
+                                    <td>@item.TotalPrice</td>
+                                    <td>@item.Status</td>
+
+                                    <td><a href="/Order/DeleteOrder/@item.OrderId" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Order/UpdateOrder/@item.OrderId" class="btn btn-outline-primary">Güncelle</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <a href="/Order/CreateOrder" class="btn btn-warning">Ekle</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

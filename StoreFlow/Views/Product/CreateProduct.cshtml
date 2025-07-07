@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Kategori Ekle</h4>
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Adı</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Ürün Adı" asp-for="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Fiyatı</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Ürün Fiyatı" asp-for="Price">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Kategori Adı</label>
+                        <select asp-for="CategoryId" asp-items="@ViewBag.category" class="form-control">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Stok</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="Stok" asp-for="Stok">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
